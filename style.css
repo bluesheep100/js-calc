@@ -1,7 +1,8 @@
-@import './dark_mode.css';
+@import './icons.css';
 
-:root {
-
+@font-face {
+    font-family: 'RobotoMono-Regular';
+    src: url('./fonts/RobotoMono/RobotoMono-Regular.ttf') format('truetype');
 }
 
 * {
@@ -9,19 +10,35 @@
 }
 
 html, body {
+    font-family: 'RobotoMono-Regular', sans-serif;
     padding: 0;
     margin: 0;
+}
+
+h2 {
+    margin-left: 1rem;
 }
 
 .container {
     margin: 0 auto;
     max-width: 500px;
-    padding: 1rem 2rem 0;
+    padding: 2rem 2rem 0;
 }
 
 .calc-bg {
     background-color: whitesmoke;
-    border: 1px solid rgba(99, 119, 119, 0.5);
+    border: 1px solid rgba(99, 119, 119, 0.3);
+}
+
+.calc-heading {
+    margin-bottom: 0;
+}
+
+.calc-output {
+    display: block;
+    font-size: 1.75rem;
+    padding: 1rem;
+    text-align: end;
 }
 
 .calc-btn-row {
@@ -33,7 +50,7 @@ html, body {
     border: none;
     padding: 2rem 0;
     font-size: 1.1rem;
-    flex: 1;
+    flex: 0 1 25%;
 }
 
 .calc-btn:hover {

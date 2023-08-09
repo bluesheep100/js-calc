@@ -1,6 +1,11 @@
 @media(prefers-color-scheme: dark) {
     body {
         background-color: #011627;
+        color: #5f7e97;
+    }
+
+    .calc-bg {
+        background-color: #0d1d2a;
     }
 
     .calc-btn {
@@ -10,6 +15,6 @@
 
     .calc-btn:hover {
         transition: .2s;
-        background-color: #13344f !important;
+        background-color: #13344f;
     }
 }

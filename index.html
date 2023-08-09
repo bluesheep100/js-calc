@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dark_mode.css">
 
     <title>JS Calculator</title>
 </head>
@@ -14,22 +15,45 @@
         <div class="calc-bg">
             <article>
                 <section>
-                    <h2>
-                        <label for="output-field">Calculator</label>
-                    </h2>
-                    <input type="text" name="output-field" id="output-field" disabled aria-disabled="true">
+                    <h2 class="calc-heading">Calculator</h2>
+
+                    <output class="calc-output">1+2-3x4</output>
                 </section>
                 <section>
+                    <!-- Shortcut buttons for 1 / x, x^2, and sqrt(x) -->
+                    <!--<div class="calc-btn-row">
+                        <button class="calc-btn">
+                            <math>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mi>x</mi>
+                                </mfrac>
+                            </math>
+                        </button>
+                        <button class="calc-btn">
+                            <math>
+                                <msup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </math>
+                        </button>
+                        <button class="calc-btn">
+                            <math>
+                                <mroot>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </mroot>
+                            </math>
+                        </button>
+                        <button class="calc-btn">&div;</button>
+                    </div>-->
                     <div class="calc-btn-row">
-                        <button class="calc-btn">%</button>
                         <button class="calc-btn">CE</button>
                         <button class="calc-btn">C</button>
-                        <button class="calc-btn">=</button>
-                    </div>
-                    <div class="calc-btn-row">
-                        <button class="calc-btn">1</button>
-                        <button class="calc-btn">2</button>
-                        <button class="calc-btn">3</button>
+                        <button class="calc-btn">
+                            <i class="icon-backspace"></i>
+                        </button>
                         <button class="calc-btn">&div;</button>
                     </div>
                     <div class="calc-btn-row">
@@ -54,7 +78,6 @@
             </article>
         </div>
     </main>
-
     <script src="./calculator.js"></script>
 </body>
 </html>
