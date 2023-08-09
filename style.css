@@ -13,4 +13,30 @@ html, body {
     margin: 0;
 }
 
+.container {
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 1rem 2rem 0;
+}
 
+.calc-bg {
+    background-color: whitesmoke;
+    border: 1px solid rgba(99, 119, 119, 0.5);
+}
+
+.calc-btn-row {
+    display: flex;
+}
+
+.calc-btn {
+    cursor: pointer;
+    border: none;
+    padding: 2rem 0;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.calc-btn:hover {
+    transition: .2s;
+    background-color: #e6e6e6;
+}
