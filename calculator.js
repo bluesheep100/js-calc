@@ -10,13 +10,9 @@ function multiply(a, b) {
     return a * b;
 }
 function divide(a, b) {
-    if(b != 0 ){
+    if (b != 0) {
         return a / b;
     }
-    else{
-        console.log("cannot divide by 0!")
-    }
-    
 }
 
 function operate(operator, a, b) {
@@ -29,8 +25,6 @@ function operate(operator, a, b) {
             return (multiply(a, b));
         case "/":
             return (divide(a, b));
-        
     }
-
 }
 console.log(operate("*", 4, 0))
