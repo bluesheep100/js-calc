@@ -14,10 +14,10 @@ function divide(a, b) {
 }
 
 function operate(operator, a ,b){
-    
+
 }
 
-console.log(add(10, 4));
-console.log(multiply(10, 4));
+console.log(add(5, 4));
+console.log(multiply(2, 4));
 console.log(subtract(10, 4));
 console.log(divide(10, 4));
