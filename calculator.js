@@ -1,5 +1,3 @@
-const operator = "+"
-
 function add(a, b) {
     return a + b;
 }
