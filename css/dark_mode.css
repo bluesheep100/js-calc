@@ -1,0 +1,15 @@
+@media(prefers-color-scheme: dark) {
+    body {
+        background-color: var(--bg-dark-primary);
+        color: var(--text-dark);
+    }
+
+    .calc-bg {
+        background-color: var(--bg-dark-secondary);
+    }
+
+    .calc-btn {
+        color: #5f7e97;
+        background-color: #0b2942;
+    }
+}

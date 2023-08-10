@@ -1,0 +1,13 @@
+.flex-50 {
+    flex: 0 1 50%;
+}
+
+.bg-highlight {
+    background-color: #9e64c5;
+    color: var(--text-light);
+}
+
+.bg-danger {
+    background-color: #ef5350;
+    color: whitesmoke;
+}
