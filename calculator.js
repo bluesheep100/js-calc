@@ -1,3 +1,5 @@
+const operator = "+"
+
 function add(a, b) {
     return a + b;
 }
@@ -10,14 +12,27 @@ function multiply(a, b) {
     return a * b;
 }
 function divide(a, b) {
-    return a / b;
+    if(b != 0 ){
+        return a / b;
+    }
+    else{
+        console.log("cannot divide by 0!")
+    }
+    
 }
 
-function operate(operator, a ,b){
+function operate(operator, a, b) {
+    switch (operator) {
+        case "+":
+            return (add(a, b))
+        case "-":
+            return (subtract(a, b));
+        case "*":
+            return (multiply(a, b));
+        case "/":
+            return (divide(a, b));
+        
+    }
 
 }
-
-console.log(add(5, 4));
-console.log(multiply(2, 4));
-console.log(subtract(10, 4));
-console.log(divide(10, 4));
+console.log(operate("*", 4, 0))
