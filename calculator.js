@@ -10,7 +10,7 @@ function multiply(a, b) {
     return a * b;
 }
 function divide(a, b) {
-    if (b != 0) {
+    if (b != 0 || !isNaN(b)) {
         return a / b;
     }
 }
@@ -21,7 +21,7 @@ function operate(operator, a, b) {
             return (add(a, b))
         case "-":
             return (subtract(a, b));
-        case "*":
+        case "x":
             return (multiply(a, b));
         case "/":
             return (divide(a, b));
