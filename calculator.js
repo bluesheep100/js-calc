@@ -10,7 +10,7 @@ function multiply(a, b) {
     return a * b;
 }
 function divide(a, b) {
-    if (b != 0) {
+    if (b != 0 || !isNaN(b)) {
         return a / b;
     }
 }
