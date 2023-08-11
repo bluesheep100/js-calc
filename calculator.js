@@ -9,6 +9,7 @@ function subtract(a, b) {
 function multiply(a, b) {
     return a * b;
 }
+
 function divide(a, b) {
     if (b != 0 || !isNaN(b)) {
         return a / b;
@@ -27,4 +28,5 @@ function operate(operator, a, b) {
             return (divide(a, b));
     }
 }
-console.log(operate("*", 4, 0))
+
+//console.log(operate("*", 4, 0))
