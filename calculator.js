@@ -9,20 +9,15 @@ let userInput,
 
 // Arithmetic Functions
 
-function add(a, b) {
-    return a + b;
-}
+const add = (a, b) =>  a + b;
 
-function subtract(a, b) {
-    return a - b;
-}
+const subtract = (a, b) => a - b;
 
-function multiply(a, b) {
-    return a * b;
-}
+const multiply = (a, b) => a * b;
 
 function divide(a, b) {
-    if (parseFloat(b) !== 0 || !isNaN(b)) {
+    if (parseFloat(a) !== 0 || !isNaN(a) ||
+        parseFloat(b) !== 0 || !isNaN(b)) {
         return a / b;
     }
 }
