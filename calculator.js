@@ -1,13 +1,11 @@
 const calculator = document.querySelector('.calc-bg');
-const calculator_output = calculator.getElementsByTagName('output')[0];
+const calculatorOutput = calculator.querySelector('output');
 
 const operators = ['+', '-', 'x', '/'];
 
 let userInput,
     lastResult,
     operator;
-
-updateOutput('0');
 
 // Arithmetic Functions
 
@@ -24,7 +22,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b != 0 || !isNaN(b)) {
+    if (parseFloat(b) !== 0 || !isNaN(b)) {
         return a / b;
     }
 }
@@ -32,20 +30,20 @@ function divide(a, b) {
 function operate(operator, a, b) {
     switch (operator) {
         case "+":
-            return (add(a, b))
+            return add(a, b);
         case "-":
-            return (subtract(a, b));
+            return subtract(a, b);
         case "x":
-            return (multiply(a, b));
+            return multiply(a, b);
         case "/":
-            return (divide(a, b));
+            return divide(a, b);
     }
 }
 
 // Helper and handler functions
 
 function updateOutput(text) {
-    calculator_output.innerText = text;
+    calculatorOutput.innerText = text;
 }
 
 function clearCalculator() {
@@ -57,12 +55,13 @@ function clearCalculator() {
 
 function backSpace() {
     userInput = userInput.slice(0, userInput.length - 1);
-    
+
     if (!userInput) {
         updateOutput('0');
-    } else {
-        updateOutput(userInput);
+        return;
     }
+
+    updateOutput(userInput);
 }
 
 function numberInput(num) {
@@ -145,7 +144,9 @@ function handleInput(input) {
 // Event listeners
 
 calculator.addEventListener('click', (e) => {
-    e.target.nodeName !='OUTPUT' && handleInput(e.target.innerText);
+    if (e.target.nodeName !=='OUTPUT') {
+        handleInput(e.target.innerText);
+    }
 });
 
 document.addEventListener('keydown', (e) => {
