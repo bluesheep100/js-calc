@@ -136,7 +136,7 @@ function handleInput(input) {
         equals();
     }
 
-    if (input.toLowerCase().includes('c')) {
+    if (input.match(/^[A|C]/i)) {
         clearCalculator();
     }
 }
