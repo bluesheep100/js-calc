@@ -1,3 +1,16 @@
+const calculator = document.querySelector('.calc-bg');
+const calculator_output = calculator.getElementsByTagName('output')[0];
+
+const operators = ['+', '-', 'x', '/'];
+
+let userInput,
+    lastResult,
+    operator;
+
+updateOutput('0');
+
+// Arithmetic Functions
+
 function add(a, b) {
     return a + b;
 }
@@ -29,85 +42,77 @@ function operate(operator, a, b) {
     }
 }
 
-//console.log(operate("*", 4, 0))
+// Helper and handler functions
 
-/**
- * MAKE THE CALCULATOR WORK!
- */
-const calculator = document.querySelector('.calc-bg');
-const calculator_output = calculator.getElementsByTagName('output')[0];
-
-const operators = ['+', '-', 'x', '/'];
-
-let output = 0,
-    userInput = '0',
-    lastResult = 0,
-    operator;
-
-updateOutput();
-
-function updateOutput() {
-    calculator_output.innerText = output;
+function updateOutput(text) {
+    calculator_output.innerText = text;
 }
 
 function clearCalculator() {
-    output = 0;
-    userInput = '0';
-    lastResult = 0;
+    userInput = '';
+    lastResult = '';
     operator = '';
+    updateOutput('0');
 }
 
 function backSpace() {
     userInput = userInput.slice(0, userInput.length - 1);
     
     if (!userInput) {
-        userInput = '0';
+        updateOutput('0');
+    } else {
+        updateOutput(userInput);
     }
-
-    output = userInput;
 }
 
 function numberInput(num) {
-    if (userInput === '0' || operators.includes(userInput)) {
+    if (!userInput || userInput === '0') {
         userInput = num;
     } else {
         userInput += num;
     }
 
-    output = userInput;
+    updateOutput(userInput);
 }
 
 function periodInput() {
     // if the input includes anything that is not a number, do nothing
-    if (userInput.match(/^\d+$/)) {
+    if (!userInput) {
+        userInput = '0.';
+    } else if (userInput.match(/^\d+$/)) {
         userInput += '.';
     }
 
-    output = userInput;
+    updateOutput(userInput);
 }
 
+// MAIN OPERATING FUNCTIONALITY
+
 function operatorInput(newOperator) {
-    if (!operator) {
+    if (!operator && userInput) {
         operator = newOperator;
-        lastResult = userInput;
-        userInput = '0';
+        lastResult = Number(userInput);
+        updateOutput(operator);
+    } else if (lastResult && userInput) {
+        // TODO: We should truncate the output of floats 'intelligently'
+        lastResult = operate(operator, lastResult, Number(userInput));
+        updateOutput(lastResult);
+        operator = newOperator;
     } else {
-        let operation = operate(operator, Number(lastResult), Number(userInput));
-        if (operation) {
-            lastResult = operation;
-            output = lastResult;
-        }
         operator = newOperator;
-        userInput = '0';
+        updateOutput(operator);
     }
-    output = operator;
+    
+    userInput = undefined;
 }
 
 function equals() {
-    lastResult = operate(operator, Number(lastResult), Number(userInput));
-    if (lastResult) {
-        output = lastResult;
-        userInput = '0';
+    if (lastResult && userInput) {
+        // TODO: We should truncate the output of floats 'intelligently'
+        lastResult = operate(operator, lastResult, Number(userInput));
+        updateOutput(lastResult);
+        userInput = undefined;
+        operator = '';
     }
 }
 
@@ -120,7 +125,7 @@ function handleInput(input) {
         periodInput();
     }
 
-    if (!input && input === 'Backspace') {
+    if (!input || input === 'Backspace') {
         backSpace();
     }
 
@@ -136,6 +141,8 @@ function handleInput(input) {
         clearCalculator();
     }
 }
+
+// Event listeners
 
 calculator.addEventListener('click', (e) => {
     e.target.nodeName !='OUTPUT' && handleInput(e.target.innerText);
