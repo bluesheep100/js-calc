@@ -9,14 +9,14 @@ let userInput,
 
 // Arithmetic Functions
 
-const add = (a, b) =>  a + b;
+const add = (a, b) => a + b;
 
 const subtract = (a, b) => a - b;
 
 const multiply = (a, b) => a * b;
 
 function divide(a, b) {
-    if (parseFloat(a) !== 0 || !isNaN(a) ||
+    if (parseFloat(a) !== 0 || !isNaN(a) ||
         parseFloat(b) !== 0 || !isNaN(b)) {
         return a / b;
     }
@@ -107,7 +107,7 @@ function operatorInput(newOperator) {
         updateOperator(newOperator);
         updateOutput(operator);
     }
-    
+
     userInput = undefined;
 }
 
@@ -134,7 +134,7 @@ function handleInput(input) {
     if (operators.includes(input)) {
         operatorInput(input);
     }
-    
+
     if (input === '=' || input === 'Enter') {
         equals();
     }
@@ -145,11 +145,12 @@ function handleInput(input) {
 }
 
 // Event listeners
-
-calculator.addEventListener('click', (e) => {
-    if (e.target.nodeName !=='OUTPUT') {
-        handleInput(e.target.innerText);
-    }
+calculator.querySelectorAll('button.calc-btn').forEach(button => {
+    button.addEventListener('click', e => {
+        if (e.target.nodeName !== 'OUTPUT') {
+            handleInput(e.target.innerText);
+        }
+    })
 });
 
 document.addEventListener('keydown', (e) => {
