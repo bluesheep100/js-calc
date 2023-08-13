@@ -41,6 +41,10 @@ function updateOutput(text) {
     calculatorOutput.innerText = text;
 }
 
+function updateOperator(newOperator) {
+    operator = newOperator;
+}
+
 function clearCalculator() {
     userInput = '';
     lastResult = '';
@@ -81,30 +85,26 @@ function periodInput() {
 
 // MAIN OPERATING FUNCTIONALITY
 
+function startNewOperation(newOperator) {
+    updateOperator(newOperator);
+    lastResult = Number(userInput);
+    updateOutput(operator);
+}
+
+function operateWithPreviousResult(newOperator) {
+    // TODO: We should truncate the output of floats 'intelligently'
+    lastResult = operate(operator, lastResult, Number(userInput));
+    updateOutput(lastResult);
+    updateOperator(newOperator);
+}
+
 function operatorInput(newOperator) {
-    /**
-     * If the user has input a number but there is no operator yet, store the
-     * number as the first operand and store operator. [This allows to start
-     * anew if the user presses a number after the equal button]
-     *
-     * Else, if there is already a stored number and a new number, performe the
-     * operation that was stored in operator, store it for new operations, and
-     * store the operator for the next operation. [This allows to perform
-     * calculations afer pressing an equal button with the previous result]
-     *
-     * In the default case, we just update the operator that was previously set
-     */
     if (!operator && userInput) {
-        operator = newOperator;
-        lastResult = Number(userInput);
-        updateOutput(operator);
+        startNewOperation(newOperator);
     } else if (lastResult && userInput) {
-        // TODO: We should truncate the output of floats 'intelligently'
-        lastResult = operate(operator, lastResult, Number(userInput));
-        updateOutput(lastResult);
-        operator = newOperator;
+        operateWithPreviousResult(newOperator);
     } else {
-        operator = newOperator;
+        updateOperator(newOperator);
         updateOutput(operator);
     }
     
@@ -112,19 +112,9 @@ function operatorInput(newOperator) {
 }
 
 function equals() {
-    /**
-     * The condition checks if we have to numbers to operate (the operator is
-     * implicitly set if this condition is met; see operatorInput)
-     *
-     * If met, we perform the calculation, store it for later, show the result
-     * and reset userInput and operator
-     */
     if (lastResult && userInput) {
-        // TODO: We should truncate the output of floats 'intelligently'
-        lastResult = operate(operator, lastResult, Number(userInput));
-        updateOutput(lastResult);
+        operateWithPreviousResult('');
         userInput = undefined;
-        operator = '';
     }
 }
 
