@@ -44,6 +44,7 @@ h2 {
 .calc-bg {
     background-color: whitesmoke;
     border: 1px solid rgba(99, 119, 119, 0.3);
+    max-width: calc(500px - 4rem);
     flex: 1;
 }
 
@@ -55,6 +56,8 @@ h2 {
     display: block;
     font-size: 1.75rem;
     padding: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
     text-align: end;
 }
 
@@ -78,4 +81,9 @@ h2 {
 .calc-btn:active {
     transition: .1s;
     filter: brightness(85%);
+}
+
+.calc-btn:focus {
+    outline: 1px solid #7fdbca;
+    z-index: 100;
 }
