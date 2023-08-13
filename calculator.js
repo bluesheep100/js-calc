@@ -145,12 +145,10 @@ function handleInput(input) {
 }
 
 // Event listeners
-calculator.querySelectorAll('button.calc-btn').forEach(button => {
-    button.addEventListener('click', e => {
-        if (e.target.nodeName !== 'OUTPUT') {
-            handleInput(e.target.innerText);
-        }
-    })
+calculator.addEventListener('click', e => {
+    if (e.target.nodeName === 'BUTTON') {
+        handleInput(e.target.innerText);
+    }
 });
 
 document.addEventListener('keydown', (e) => {
