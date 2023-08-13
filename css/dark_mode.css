@@ -12,4 +12,8 @@
         color: #5f7e97;
         background-color: #0b2942;
     }
+
+    .calc-btn:focus {
+        outline: 1px solid #7fdbca;
+    }
 }
