@@ -110,7 +110,7 @@ function operateWithPreviousResult(newOperator) {
     // TODO: We should truncate the output of floats 'intelligently'
     lastResult = operate(operator, lastResult, Number(userInput));
     if (isFloat(lastResult)) {
-        lastResult = lastResult.toFixed(4);
+        lastResult = parseFloat(lastResult.toFixed(4));
     }
 
     updateOutput(lastResult);
