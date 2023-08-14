@@ -7,6 +7,14 @@ let userInput,
     lastResult,
     operator;
 
+function isFloat(num) {
+    if (num !== Infinity) {
+        return (num).toString().includes('.');
+    }
+
+    return false;
+}
+
 // Arithmetic Functions
 
 const add = (a, b) => a + b;
@@ -43,16 +51,6 @@ function updateOutput(text) {
 
 function updateOperator(newOperator) {
     operator = newOperator;
-}
-
-function setDecimals(number) {
-    const decimals = number.toString().split('.')[1];
-
-    if (decimals.length > 4) {
-        return parseFloat(number.toFixed(4));
-    }
-
-    return number;
 }
 
 function clearCalculator() {
@@ -111,7 +109,11 @@ function startNewOperation(newOperator) {
 function operateWithPreviousResult(newOperator) {
     // TODO: We should truncate the output of floats 'intelligently'
     lastResult = operate(operator, lastResult, Number(userInput));
-    updateOutput(setDecimals(lastResult));
+    if (isFloat(lastResult)) {
+        lastResult = lastResult.toFixed(4);
+    }
+
+    updateOutput(lastResult);
     updateOperator(newOperator);
 }
 

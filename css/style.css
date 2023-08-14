@@ -3,7 +3,7 @@
 :root {
     --bg-primary: white;
     --bg-secondary: whitesmoke;
-    --bg-secondary-hover: #e6e6e6;
+    --focus-border: #7fdbca;
 
     /* Dark Mode */
     --bg-dark-primary: #011627;
@@ -84,6 +84,6 @@ h2 {
 }
 
 .calc-btn:focus {
-    outline: 1px solid #7fdbca;
+    outline: 1px solid var(--focus-border);
     z-index: 100;
 }
