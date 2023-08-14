@@ -83,6 +83,13 @@ function periodInput() {
     updateOutput(userInput);
 }
 
+function changeInputSign() {
+    if (!isNaN(userInput)) {
+        userInput = (userInput * -1).toString();
+        updateOutput(userInput);
+    }
+}
+
 // MAIN OPERATING FUNCTIONALITY
 
 function startNewOperation(newOperator) {
@@ -133,6 +140,10 @@ function handleInput(input) {
 
     if (operators.includes(input)) {
         operatorInput(input);
+    }
+
+    if (input === 'Sign') {
+        changeInputSign();
     }
 
     if (input === '=' || input === 'Enter') {
