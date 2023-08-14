@@ -45,6 +45,16 @@ function updateOperator(newOperator) {
     operator = newOperator;
 }
 
+function setDecimals(number) {
+    const decimals = number.toString().split('.')[1];
+
+    if (decimals.length > 4) {
+        return parseFloat(number.toFixed(4));
+    }
+
+    return number;
+}
+
 function clearCalculator() {
     userInput = '';
     lastResult = '';
@@ -101,7 +111,7 @@ function startNewOperation(newOperator) {
 function operateWithPreviousResult(newOperator) {
     // TODO: We should truncate the output of floats 'intelligently'
     lastResult = operate(operator, lastResult, Number(userInput));
-    updateOutput(lastResult);
+    updateOutput(setDecimals(lastResult));
     updateOperator(newOperator);
 }
 
